@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-puts "Starting Dynolog"
+puts "Starting Icypop"
 
 # require your gems as usual
 require "rubygems"
@@ -43,7 +43,7 @@ if somedescription.nil?
     abort "Description Not Specified"
 end
 
-puts "Reading Environment for Dynolog"
+puts "Reading Environment for Icypop"
 
 # Read settings
 current_environment = "production"
