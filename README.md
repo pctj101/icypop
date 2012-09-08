@@ -53,7 +53,7 @@ It should contain the following:
 
 (The MIT License)
 
-Copyright (c) 2010 [geemus (Wesley Beary)](http://github.com/geemus)
+Copyright (c) 2010 [pctj101 (El Jeffo)](http://github.com/pctj101)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
