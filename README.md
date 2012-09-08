@@ -1,6 +1,4 @@
-![fog](http://geemus.s3.amazonaws.com/fog.png)
-
-icypop:
+## icypop
 
 * Uploads a file of choice to Amazon Glacier with a description
 * Logs the file upload to Amazon DynamoDB so it's easy to find the ArchiveID without requesting an inventory
