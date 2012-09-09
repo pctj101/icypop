@@ -59,7 +59,7 @@ glacier_vault = APP_CONFIG[:glacier_vault]
 glacier_multipart_chunk_size = APP_CONFIG[:glacier_multipart_chunk_size]
 target_dynamo_db = APP_CONFIG[:target_dynamo_db]
 glacier_sns_arn = APP_CONFIG[:glacier_sns_arn]
-glacier_sqs_queue_name = APP_CONFIG[:glacier_sqs_arn]
+glacier_sqs_queue_name = APP_CONFIG[:glacier_sqs_queue_name]
 
 
 #Amazon DynamoDB
@@ -154,6 +154,7 @@ end
 # Request archive inventory
 def get_inventory(vault, glacier_sns_arn)
     job = vault.jobs.create(:type => Fog::AWS::Glacier::Job::INVENTORY, 
+                :format => "JSON", 
                 :description => "#{Time.now} Inventory Request", 
                 :sns_topic => glacier_sns_arn)
     # Monitor SQS for job ready
