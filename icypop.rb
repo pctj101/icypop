@@ -126,15 +126,30 @@ puts "Finished Log to Dynamodb"
 # Find archive
 # table.items.where(:description =>"test1").each {|i| puts i.attributes.to_h}
 
-# Request Restore
-# job = vault.jobs.create(:type => Fog::AWS::Glacier::Job::ARCHIVE, :description => "#{Time.now} Restore Request", :archive_id => archive.id)
-
-# Download File - Need to determine which job
-# restore_target = "restore.dat"
 
 # Find job if necessary
 # File.open(restore_target, "w") {|f| vault.jobs[0].get_output(:io => f) }
 
-# Prefer to reuse job object from the restore request 
-# sleep 1 while job.status_code == "InProgress"
-# File.open(restore_target, "w") {|f| job.get_output(:io => f) }
+
+# Request archive restore
+# job = restore_archive(archive.id)
+
+def restore_archive(archive_id)
+    # Request Restore
+    job = vault.jobs.create(:type => Fog::AWS::Glacier::Job::ARCHIVE, 
+                :description => "#{Time.now} Restore Request", 
+                :archive_id => archive_id)
+end
+
+def download_archive(job, restore_target)
+
+    # Prefer to reuse job object from the restore request 
+    while job.status_code == "InProgress"  do
+        puts "Sleeping"
+        sleep 300
+        puts "Checking on job @ #{Time.now} / #{job.id} / #{job.description}"
+        job.reload
+    end
+    File.open(restore_target, "w") {|f| job.get_output(:io => f) }
+
+end
