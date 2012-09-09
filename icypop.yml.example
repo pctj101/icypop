@@ -5,3 +5,5 @@ production:
     :glacier_vault: ""
     :glacier_multipart_chunk_size: 1048576
     :target_dynamo_db: "glacier_upload_log"
+    :glacier_sns_arn: "arn:aws:sns:...."
+    :glacier_sqs_queue_name: "Queue_Name"
