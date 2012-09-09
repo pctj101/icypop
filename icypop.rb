@@ -220,7 +220,7 @@ def process_sqs_message(vault, message)
       jobid = job_id_from_sqs_message(message)
       unless jobid.nil?
         puts "Restore job_id: #{jobid}"
-        restore_target = Time.now.strftime("%Y%m%d.restore")
+        restore_target = Time.now.strftime("%Y%m%d%H%M.restore")
         restore_archive_from_jobid(vault, jobid, restore_target)
       end
 end
