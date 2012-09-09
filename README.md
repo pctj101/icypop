@@ -1,3 +1,7 @@
+## Important
+
+* Uses a lot of bleeding edge Fog Glacier code.  Get this or newer: https://github.com/fog/fog/commit/1ca73fcb
+
 ## icypop
 
 * Uploads a file of choice to Amazon Glacier with a description
